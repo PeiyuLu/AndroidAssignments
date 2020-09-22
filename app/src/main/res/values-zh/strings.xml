@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidAssignments 1</string>
+    <string name="hello_message">你好!</string>
+    <string name="ButtonText">这是个按钮</string>
+</resources>
