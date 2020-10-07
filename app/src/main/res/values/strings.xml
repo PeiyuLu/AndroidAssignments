@@ -6,4 +6,8 @@
     <string name="LoginName">login name</string>
     <string name="Password">password</string>
     <string name="PasswordName">password</string>
+    <string name="Switch">What does it do?</string>
+    <string name="CheckBox">checkbox</string>
+    <string name="RadioButton">radiobutton</string>
+    <string name="Image">image</string>
 </resources>

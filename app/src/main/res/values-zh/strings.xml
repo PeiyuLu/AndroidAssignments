@@ -7,4 +7,8 @@
     <string name="LoginName">用户名</string>
     <string name="Password">密码</string>
     <string name="PasswordName">输入密码</string>
+    <string name="Switch">这是做什么的？</string>
+    <string name="CheckBox">勾选框</string>
+    <string name="RadioButton">勾选按钮</string>
+    <string name="Image">图片</string>
 </resources>

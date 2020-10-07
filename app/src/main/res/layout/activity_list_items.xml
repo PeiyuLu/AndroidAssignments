@@ -17,7 +17,7 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:gravity="fill"
-        android:text="RadioButton" />
+        android:text="@string/RadioButton" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:gravity="fill"
-        android:text="CheckBox" />
+        android:text="@string/CheckBox" />
 
     <Switch
         android:id="@+id/switch1"
@@ -33,14 +33,17 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:gravity="fill"
-        android:text="What does it do?" />
+        android:text="@string/Switch"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
+        android:contentDescription="@string/Image"
         android:gravity="fill"
+        android:text="@string/Image"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
 </GridLayout>
