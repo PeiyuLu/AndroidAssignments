@@ -10,4 +10,13 @@
     <string name="CheckBox">checkbox</string>
     <string name="RadioButton">radiobutton</string>
     <string name="Image">image</string>
+    <string name="LoginButton">Login</string>
+
+    <string name="dialog_message">Do you want to finish this activity?</string>
+    <string name="dialog_title">Message</string>
+    <string name="ok">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="text_on">Switch is on</string>
+    <string name="text_off">Switch is off</string>
+    <string name="passActivity">ListItemsActivity passed: My information to share</string>
 </resources>

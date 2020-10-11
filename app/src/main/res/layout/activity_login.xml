@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="0.044" />
 
     <EditText
+        android:id="@+id/editEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="login name"
@@ -54,5 +55,12 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/LoginButton"
+        android:onClick="startActivity"/>
 
 </LinearLayout>

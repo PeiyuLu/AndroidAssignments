@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:gravity="fill"
+        android:onClick="OnCheckChanged"
         android:text="@string/CheckBox" />
 
     <Switch
@@ -34,15 +35,17 @@
         android:layout_columnWeight="1"
         android:gravity="fill"
         android:text="@string/Switch"
+        android:onClick="setOnCheckedChanged"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:contentDescription="@string/Image"
         android:gravity="fill"
+        android:onClick="click_image"
         android:text="@string/Image"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
