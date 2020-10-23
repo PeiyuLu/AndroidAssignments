@@ -20,4 +20,7 @@
     <string name="text_on">转换开启</string>
     <string name="text_off">转换关闭</string>
     <string name="passActivity">ListItemsActivity 通过: 来分享我的信息</string>
+
+    <string name="ButtonText2">开始谈话</string>
+    <string name="Send">发送</string>
 </resources>

@@ -19,4 +19,7 @@
     <string name="text_on">Switch is on</string>
     <string name="text_off">Switch is off</string>
     <string name="passActivity">ListItemsActivity passed: My information to share</string>
+
+    <string name="ButtonText2">Start Chat</string>
+    <string name="Send">Send</string>
 </resources>

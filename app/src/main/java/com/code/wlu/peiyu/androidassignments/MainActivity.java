@@ -29,6 +29,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //startChat = ;
+//        findViewById(R.id.button_chat).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(ACTIVITY_NAME, "User clicked Start Chat");
+//                startActivity(new Intent(MainActivity.this, ChatWindow.class));
+//            }
+//        });
+    }
+    public void start_chat(View v){
+        Log.i(ACTIVITY_NAME,"Users click the Start Chat");
+        findViewById(R.id.button_chat).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent_start_chat = new Intent(MainActivity.this,ChatWindow.class);
+                startActivity(intent_start_chat);
+            }
+        });
     }
 //    public void startAnotherActivity(View v){
 //        Intent sIntent = new Intent(MainActivity.this,
@@ -55,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
     @Override
     protected void onStart() {
         super.onStart();
