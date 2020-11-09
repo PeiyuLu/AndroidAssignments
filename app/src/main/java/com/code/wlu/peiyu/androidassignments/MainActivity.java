@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void start_toolbar_activity(View v){
+        Intent intent_test_toolbar = new Intent(MainActivity.this,TestToolbar.class);
+        startActivity(intent_test_toolbar);
+    }
 //    public void startAnotherActivity(View v){
 //        Intent sIntent = new Intent(MainActivity.this,
 //                ListItemsActivity.class);

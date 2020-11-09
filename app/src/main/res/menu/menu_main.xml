@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_one"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:orderInCategory="10"
+        android:title="One" />
+
+    <item
+        android:id="@+id/action_two"
+        android:icon="@drawable/ic_baseline_access_time_24"
+        android:orderInCategory="10"
+        android:title="Two"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_three"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_access_alarm_24"
+        android:orderInCategory="101"
+        android:title="Three" />
+
+    <item
+        android:id="@+id/about"
+        app:showAsAction="never"
+        android:orderInCategory="101"
+        android:title="About"
+        android:onClick="onOptionItemSelected"/>
+</menu>

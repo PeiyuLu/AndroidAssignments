@@ -23,4 +23,9 @@
 
     <string name="ButtonText2">开始谈话</string>
     <string name="Send">发送</string>
+
+    <string name="testToolbar">测试toolbar</string>
+    <string name="title_activity_test_toolbar">测试toolbar窗口</string>
+    <string name="go_back">你想返回吗？</string>
+    <string name="add_item">添加内容</string>
 </resources>
