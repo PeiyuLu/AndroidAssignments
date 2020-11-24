@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Assignments 1</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I\'m a button</string>
@@ -28,15 +28,277 @@
     <string name="go_back">Do you want to go back?</string>
     <string name="add_item">Add item</string>
 
+    <string name="weather_forecast">Weather Forecast</string>
+    <string name="min_temp">Lowest Temperature</string>
+    <string name="max_temp">Highest Temperature</string>
+    <string name="current_temp">Current Temperature</string>
+    <string name="mintemp">Lowest Temperature</string>
+    <string name="maxtemp">Highest Temperature</string>
+    <string name="currenttemp">Current Temperature</string>
+
+    <string name="show_id">Show ID: </string>
+    <string name="show_message">Show message: </string>
+    <string name="delete_message">Delete this message</string>
+
+    <string name="select_city">Select City: </string>
+    <string-array name="cities">
+        <item>Abbotsford</item>
+        <item>Alert</item>
+        <item>Amherst</item>
+        <item>Amos</item>
+        <item>Antigonish</item>
+        <item>Arctic Bay</item>
+        <item>Argentia</item>
+        <item>Arviat</item>
+        <item>Athabasca</item>
+        <item>Atikokan</item>
+        <item>Attawapiskat</item>
+        <item>Baddeck</item>
+        <item>Baie-Comeau</item>
+        <item>Baker Lake</item>
+        <item>Banff</item>
+        <item>Barrie</item>
+        <item>Bathurst</item>
+        <item>Belleville</item>
+        <item>Berens River</item>
+        <item>Big Beaverhouse</item>
+        <item>Biggar</item>
+        <item>Brandon</item>
+        <item>Brochet</item>
+        <item>Brockville</item>
+        <item>Brooks</item>
+        <item>Buchans</item>
+        <item>Burns Lake</item>
+        <item>Burwash Landing</item>
+        <item>Calgary</item>
+        <item>Cambridge Bay</item>
+        <item>Campbell River</item>
+        <item>Camrose</item>
+        <item>Cap-Chat</item>
+        <item>Cape Dorset</item>
+        <item>Cartwright</item>
+        <item>Cat Lake</item>
+        <item>Channel-Port aux Basques</item>
+        <item>Chapleau</item>
+        <item>Charlottetown</item>
+        <item>Chesterfield Inlet</item>
+        <item>Chicoutimi</item>
+        <item>Chilliwack</item>
+        <item>Churchill</item>
+        <item>Cobalt</item>
+        <item>Cochrane</item>
+        <item>Coral Harbour</item>
+        <item>Corner Brook</item>
+        <item>Cornwall</item>
+        <item>Courtenay</item>
+        <item>Cranbrook</item>
+        <item>Creston</item>
+        <item>Dauphin</item>
+        <item>Dawson Creek</item>
+        <item>Dease Lake</item>
+        <item>Deer Lake</item>
+        <item>Deer Lake</item>
+        <item>Digby</item>
+        <item>Dolbeau</item>
+        <item>Drummondville</item>
+        <item>Dryden</item>
+        <item>Eastmain</item>
+        <item>Edmonton</item>
+        <item>Edmundston</item>
+        <item>Ennadai</item>
+        <item>Flin Flon</item>
+        <item>Fort Chipewyan</item>
+        <item>Fort Good Hope</item>
+        <item>Fort McMurray</item>
+        <item>Fort McPherson</item>
+        <item>Fort Nelson</item>
+        <item>Fort Resolution</item>
+        <item>Fort Saint John</item>
+        <item>Fort Severn</item>
+        <item>Fort Simpson</item>
+        <item>Fort Smith</item>
+        <item>Forteau Bay</item>
+        <item>Fredericton</item>
+        <item>Gander</item>
+        <item>Gaspe</item>
+        <item>Geraldton</item>
+        <item>Gillam</item>
+        <item>Gimli</item>
+        <item>Gjoa Haven</item>
+        <item>Grande Prairie</item>
+        <item>Grise Fiord</item>
+        <item>Halifax</item>
+        <item>Hall Beach</item>
+        <item>Hamilton</item>
+        <item>Happy Valley</item>
+        <item>Hay River</item>
+        <item>Hearst</item>
+        <item>Hinton</item>
+        <item>Holman</item>
+        <item>Hopedale</item>
+        <item>Hudson Bay</item>
+        <item>Igloolik</item>
+        <item>Inukjuak</item>
+        <item>Inuvik</item>
+        <item>Iqaluit</item>
+        <item>Island Lake</item>
+        <item>Ivujivik</item>
+        <item>Jasper</item>
+        <item>Joliette</item>
+        <item>Kamloops</item>
+        <item>Kangirsuk</item>
+        <item>Kapuskasing</item>
+        <item>Kelowna</item>
+        <item>Kenora</item>
+        <item>Kimmirut</item>
+        <item>Kindersley</item>
+        <item>Kingston</item>
+        <item>Kitchener</item>
+        <item>Kugluktuk</item>
+        <item>Kuujjuaq</item>
+        <item>La Ronge</item>
+        <item>La Sarre</item>
+        <item>La Scie</item>
+        <item>Lac La Biche</item>
+        <item>Lake Louise</item>
+        <item>Lansdowne House</item>
+        <item>Lethbridge</item>
+        <item>Lillooet</item>
+        <item>Little Current</item>
+        <item>Liverpool</item>
+        <item>London</item>
+        <item>Lutselke</item>
+        <item>Lynn Lake</item>
+        <item>Marathon</item>
+        <item>Matagami</item>
+        <item>Meadow Lake</item>
+        <item>Medicine Hat</item>
+        <item>Melville</item>
+        <item>Mingan</item>
+        <item>Moncton</item>
+        <item>Mont-Laurier</item>
+        <item>Montreal</item>
+        <item>Moose Jaw</item>
+        <item>Moosonee</item>
+        <item>Nain</item>
+        <item>Nanaimo</item>
+        <item>Natashquan</item>
+        <item>Nelson House</item>
+        <item>Nelson</item>
+        <item>New Bella Bella</item>
+        <item>New Glasgow</item>
+        <item>New Liskeard</item>
+        <item>Nipigon</item>
+        <item>Norman Wells</item>
+        <item>North Battleford</item>
+        <item>North Bay</item>
+        <item>Norway House</item>
+        <item>Orangeville</item>
+        <item>Orillia</item>
+        <item>Oshawa</item>
+        <item>Ottawa</item>
+        <item>Owen Sound</item>
+        <item>Oxford House</item>
+        <item>Pangnirtung</item>
+        <item>Parry Sound</item>
+        <item>Paulatuk</item>
+        <item>Peace River</item>
+        <item>Pembroke</item>
+        <item>Penticton</item>
+        <item>Peterborough</item>
+        <item>Pond Inlet</item>
+        <item>Port Hardy</item>
+        <item>Port Hope Simpson</item>
+        <item>Port-Menier</item>
+        <item>Powell River</item>
+        <item>Prince Albert</item>
+        <item>Prince George</item>
+        <item>Prince Rupert</item>
+        <item>Pukatawagan</item>
+        <item>Quabec</item>
+        <item>Quesnel</item>
+        <item>Radisson</item>
+        <item>Rankin Inlet</item>
+        <item>Red Deer</item>
+        <item>Red Lake</item>
+        <item>Regina</item>
+        <item>Repulse Bay</item>
+        <item>Resolute</item>
+        <item>Revelstoke</item>
+        <item>Rigolet</item>
+        <item>Rimouski</item>
+        <item>Riviere-du-Loup</item>
+        <item>Rouyn-Noranda</item>
+        <item>Saint Anthony</item>
+        <item>Saint John</item>
+        <item>Saint Johns</item>
+        <item>Saint-Augustin</item>
+        <item>Saint-Georges</item>
+        <item>Saint-Jerome</item>
+        <item>Salluit</item>
+        <item>Sandspit</item>
+        <item>Sarnia</item>
+        <item>Saskatoon</item>
+        <item>Schefferville</item>
+        <item>Selkirk</item>
+        <item>Sept-iles</item>
+        <item>Shamattawa</item>
+        <item>Shawinigan-Sud</item>
+        <item>Shelburne</item>
+        <item>Sherbrooke</item>
+        <item>Smithers</item>
+        <item>Steinbach</item>
+        <item>Stephenville</item>
+        <item>Stettler</item>
+        <item>Stony Rapids</item>
+        <item>Sudbury</item>
+        <item>Swift Current</item>
+        <item>Sydney</item>
+        <item>Taloyoak</item>
+        <item>Terrace</item>
+        <item>The Pas</item>
+        <item>Thessalon</item>
+        <item>Thompson</item>
+        <item>Thunder Bay</item>
+        <item>Timmins</item>
+        <item>Tofino</item>
+        <item>Toronto</item>
+        <item>Trepassey</item>
+        <item>Trois-Rivieres</item>
+        <item>Trout River</item>
+        <item>Tsiigehtchic</item>
+        <item>Tuktoyaktuk</item>
+        <item>Uranium City</item>
+        <item>Val-dOr</item>
+        <item>Vancouver</item>
+        <item>Vegreville</item>
+        <item>Victoria</item>
+        <item>Victoriaville</item>
+        <item>Waterloo</item>
+        <item>Watson Lake</item>
+        <item>Wawa</item>
+        <item>West Dawson</item>
+        <item>Wetaskiwin</item>
+        <item>Weyburn</item>
+        <item>Whitehorse</item>
+        <item>Wiarton</item>
+        <item>Williams Lake</item>
+        <item>Windsor</item>
+        <item>Windsor</item>
+        <item>Winnipeg</item>
+        <item>Yarmouth</item>
+        <item>Yellowknife</item>
+        <item>Yorkton</item>
+    </string-array>
 
 
-<!--    <string name="title_activity_test_toolbar">TestToolbar</string>-->
-<!--    &lt;!&ndash; Strings used for fragments for navigation &ndash;&gt;-->
-<!--    <string name="first_fragment_label">First Fragment</string>-->
-<!--    <string name="second_fragment_label">Second Fragment</string>-->
-<!--    <string name="next">Next</string>-->
-<!--    <string name="previous">Previous</string>-->
+    <!--    <string name="title_activity_test_toolbar">TestToolbar</string>-->
+    <!--    &lt;!&ndash; Strings used for fragments for navigation &ndash;&gt;-->
+    <!--    <string name="first_fragment_label">First Fragment</string>-->
+    <!--    <string name="second_fragment_label">Second Fragment</string>-->
+    <!--    <string name="next">Next</string>-->
+    <!--    <string name="previous">Previous</string>-->
 
-<!--    <string name="hello_first_fragment">Hello first fragment</string>-->
-<!--    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>-->
+    <!--    <string name="hello_first_fragment">Hello first fragment</string>-->
+    <!--    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>-->
 </resources>

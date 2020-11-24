@@ -1,9 +1,14 @@
 package com.code.wlu.peiyu.androidassignments;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,9 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-//import android.widget.Button;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,93 +30,142 @@ public class ChatWindow extends AppCompatActivity {
     private static final String ACTIVITY_NAME = "ChatWindow";
 
     private EditText textInput;
-    //private View clickListener;
-    private ArrayList<String> list; //store chat message
+    private ArrayList<String> list;
+    ChatAdapter adapter;
+    ChatDatabaseHelper db_helper;
     SQLiteDatabase db;
-    ChatDatabaseHelper db_helper;// = new ChatDatabaseHelper(this);
+    Cursor cursor;
+    FrameLayout frameLayout;
+    boolean is_exist;
+    private int current;
+
+    MessageDetails.MessageFragment fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_window);
 
         ListView listView = findViewById(R.id.list_view);
+
         list = new ArrayList<>();
-
-        //in this case, “this” is the ChatWindow, which is-A Context object
-        final ChatAdapter messageAdapter =new ChatAdapter( this );
-        listView.setAdapter (messageAdapter);
-
-        textInput = findViewById(R.id.textInput);
-        //Button sendButton = findViewById(R.id.sendButton);
-        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View v){
-                String message = textInput.getText().toString();
-                list.add(message);
-                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/getView()
-                textInput.setText("");
-                //write
-                ContentValues cv = new ContentValues();
-                cv.put("message",message);
-                db.insert(ChatDatabaseHelper.TABLE_NAME,null,cv);
-
+        adapter = new ChatAdapter(this);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                current = position;
+                if (is_exist) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    fragment = new MessageDetails.MessageFragment(id, list.get(position), true, ChatWindow.this);
+                    ft.replace(R.id.frame_layout, fragment);
+                    ft.commit();
+                } else {
+                    Intent intent = new Intent(ChatWindow.this, MessageDetails.class);
+                    intent.putExtra("id", id);
+                    intent.putExtra("message", list.get(position));
+                    startActivityForResult(intent, 1001);
+                }
             }
         });
 
-        //ChatDatabaseHelper db_helper = new ChatDatabaseHelper(this);
+        textInput = findViewById(R.id.textInput);
+        Button sendButton = findViewById(R.id.sendButton);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = textInput.getText().toString();
+                list.add(msg);
+                adapter.notifyDataSetChanged();
+                textInput.setText("");
+                ContentValues values = new ContentValues();
+                values.put("message", msg);
+                db.insert(ChatDatabaseHelper.TABLE_NAME, null, values);
+            }
+        });
+
         db_helper = new ChatDatabaseHelper(this);
-        //gets a writeable database
-        db = db_helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " + ChatDatabaseHelper.TABLE_NAME,null);
+        db = db_helper.getWritableDatabase();
+        cursor = db.rawQuery("select * from " + ChatDatabaseHelper.TABLE_NAME,null);
         cursor.moveToFirst();
-        //reading from db file
         while (!cursor.isAfterLast()) {
             Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE)));
             Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + cursor.getColumnCount());
-            //print out the name of each column returned by the cursor
             for (int i = 0; i < cursor.getColumnCount(); i++) {
                 Log.i(ACTIVITY_NAME, cursor.getColumnName(i));
             }
+            Log.i(ACTIVITY_NAME, cursor.getLong(0) + " " + cursor.getString(1));
             list.add(cursor.getString(1));
             cursor.moveToNext();
         }
-        cursor.close();
 
-//        View.OnClickListener clickListener = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                messageAdapter.notifyDataSetChanged(); //this restarts the process of getCount()/getView()
-//                textInput.setText("");
-//            }
-//        };
-//        sendButton.setOnClickListener(new View.OnClickListener(){
-
-
-
+        frameLayout = findViewById(R.id.frame_layout);
+        is_exist = frameLayout != null;
     }
 
-    private class ChatAdapter extends ArrayAdapter<String> {
-        public ChatAdapter(Context context) {
-            super(context,0);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == RESULT_OK) {
+            assert data != null;
+            long id = data.getLongExtra("id", 0);
+            db.delete(ChatDatabaseHelper.TABLE_NAME, ChatDatabaseHelper.KEY_ID + "=?", new String[]{id + ""});
+            list.remove(current);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    void remove_fragment() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        if (fragment != null) {
+            ft.remove(fragment);
+            ft.commit();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {//close cursor and database
+        super.onDestroy();
+        cursor.close();
+        db_helper.close();
+        db.close();
+    }
+
+    class ChatAdapter extends ArrayAdapter<String> {
+
+        public ChatAdapter(@NonNull Context context) {
+            super(context, 0);
         }
 
-        public int getCount(){
+        @Override
+        public long getItemId(int position) {
+            cursor.moveToPosition(position);
+            return cursor.getLong(0);
+        }
+
+        @Override
+        public int getCount() {
             return list.size();
         }
 
-        public String getItem(int position){
-            return (String) list.get(position);
+        @Nullable
+        @Override
+        public String getItem(int position) {
+            return list.get(position);
         }
 
-        public View getView(int position, View convertView, ViewGroup parent){
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
-            View result = null ;
-            if(position%2 == 0)
+            View result = null;
+            if (position%2 == 0)
                 result = inflater.inflate(R.layout.chat_row_incoming, null);
             else
                 result = inflater.inflate(R.layout.chat_row_outgoing, null);
-            TextView message = (TextView)result.findViewById(R.id.message_text);
-            message.setText(getItem(position)); // get the string at position
+            TextView message = result.findViewById(R.id.message_text);
+            message.setText(getItem(position));
             return result;
         }
     }
@@ -137,16 +193,5 @@ public class ChatWindow extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i(ACTIVITY_NAME, "In onResume()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(ACTIVITY_NAME, "In onDestroy()");
-        //close databasehelpter
-        db_helper.close();
-        //close database
-        db.close();
-
     }
 }

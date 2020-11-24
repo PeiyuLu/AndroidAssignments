@@ -9,11 +9,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    public Button weatherForecast;
     protected static final String ACTIVITY_NAME="MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,19 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, ListItemsActivity.class);
                 startActivityForResult(intent, 10);
 
+            }
+        });
+
+        weatherForecast = findViewById(R.id.button4);
+        weatherForecast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(ACTIVITY_NAME, "User clicked Start Forecast");
+                Intent intent = new Intent(MainActivity.this,
+                        WeatherForecast.class);
+                startActivityForResult(intent, 50);
+//                Log.i(ACTIVITY_NAME, "User clicked Weatherforest ");
+//                startActivity(new Intent(MainActivity.this, WeatherForecast.class));
             }
         });
 
@@ -52,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     public void start_toolbar_activity(View v){
         Intent intent_test_toolbar = new Intent(MainActivity.this,TestToolbar.class);
         startActivity(intent_test_toolbar);
+    }
+
+    public void weather_activity(View v){
+        Intent intent_weather = new Intent(MainActivity.this,WeatherForecast.class);
+        startActivity(intent_weather);
     }
 //    public void startAnotherActivity(View v){
 //        Intent sIntent = new Intent(MainActivity.this,
